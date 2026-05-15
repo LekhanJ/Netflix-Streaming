@@ -1,5 +1,7 @@
 package com.netflix.videoservice.controller;
 
+import java.io.IOException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +25,7 @@ public class VideoController {
 
     // Upload video file for a movie
     @PostMapping("/upload/{movieId}")
-    public ResponseEntity<String> uploadVide(@PathVariable String movieId, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadVide(@PathVariable String movieId, @RequestParam("file") MultipartFile file) throws IOException {
         
         log.info("Video upload request for movie: {} file size: {}MB", movieId, file.getSize() / (1024 * 1024));
 
@@ -37,6 +39,4 @@ public class VideoController {
             " - Encoding started automatically via Kafka"
         );
     }
-
-    
 }
