@@ -17,7 +17,7 @@ public class KafkaConfig {
             .build();
     }
 
-    // published to when encoding is complete. 
+    // published to when encoding is complete. Streaming Service consumes this
     @Bean
     public NewTopic videoEncodedTopic() {
         return TopicBuilder.name("video.encoded")
