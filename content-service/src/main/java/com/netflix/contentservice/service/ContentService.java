@@ -96,6 +96,13 @@ public class ContentService {
         log.info("Movie {} is now ready for streaming", movieId);
     }
 
+    public void updateVideoStatus(String movieId, VideoStatus videoStatus) {
+        Movie movie = movieRepository.findById(movieId)
+                .orElseThrow(() -> new RuntimeException("Movie not found: " + movieId));
+        movie.setVideoStatus(videoStatus);
+        movieRepository.save(movie);
+    }
+
     private MovieResponse mapToResponse(Movie movie) {
         return MovieResponse.builder()
                 .id(movie.getId())

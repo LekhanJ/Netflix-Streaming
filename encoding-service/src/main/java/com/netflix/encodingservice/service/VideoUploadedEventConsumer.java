@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class VideoEventConsumer {
+public class VideoUploadedEventConsumer {
     
     private final EncodingService encodingService;
 
