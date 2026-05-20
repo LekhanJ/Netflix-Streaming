@@ -21,7 +21,7 @@ public class MovieRequest {
     private String description;
 
     @NotNull(message = "Genre is required")
-    private Genre genere;
+    private Genre genre;
 
     private String director;
     private String cast;

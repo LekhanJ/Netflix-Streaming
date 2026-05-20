@@ -37,7 +37,7 @@ public class EncodingService {
     @Value("${ffmpeg.path}")
     private String ffmpegPath;
 
-    @Value("${encoding.base-path")
+    @Value("${encoding.base-path}")
     private String basePath;
 
     private static final String VIDEO_ENCODED_TOPIC = "video.encoded";
@@ -74,7 +74,7 @@ public class EncodingService {
             Files.createDirectories(Paths.get(jobPath + "/encoded"));
 
             // Download raw video from S3
-            String localVideoPath = jobPath + "raw_video.mp4";
+            String localVideoPath = jobPath + "/raw_video.mp4";
             downloadFromS3(event.getVideoKey(), localVideoPath);
             log.info("Raw video downloaded to {}", localVideoPath);
 
@@ -92,7 +92,7 @@ public class EncodingService {
             }
 
             // Generate master playlist
-            String masterPlayslistPath = jobPath + "encoded/master.m3u8";
+            String masterPlayslistPath = jobPath + "/encoded/master.m3u8";
             generateMasterPlaylist(masterPlayslistPath);
             log.info("Master playlist generated");
 
@@ -159,7 +159,7 @@ public class EncodingService {
             "-c:a", "aac",                                // -c:a : audio codec, AAC is common for HLS and is standard format for streaming
             "-b:a", "128k",                               // -b:a : audio bitrate, 128k is common for good audio quality in streaming, 128k for 128 kbps
             "-hls_time", "10",                            // -hls_time : segment duration in seconds, 10 means each .ts segment will be around 10 seconds long
-            "-hls_list-size", "0",                        // -hls_list-size : number of segments in playlist, 0 means include all segments in the playlist
+            "-hls_list_size", "0",                        // -hls_list-size : number of segments in playlist, 0 means include all segments in the playlist
             "-hls_segment_filename", segmentPattern,      // -hls_segment_filename : pattern for naming segment files, e.g. segment_%03d.ts will create segment_001.ts, segment_002.ts, etc.
             "-f", "hls",                                  // -f : output format, hls specifies that we want to create HLS output
             playlistPath                                  // output playlist file path, e.g. /path/to/encoded/720p/playlist.m3u8

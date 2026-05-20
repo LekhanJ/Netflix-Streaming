@@ -17,7 +17,7 @@ public class MovieResponse {
     private String id;
     private String title;
     private String description;
-    private Genre genere;
+    private Genre genre;
     private String director;
     private String cast;
     private int releaseYear;

@@ -40,6 +40,7 @@ public class Movie {
     private Genre genere;
 
     private String director;
+    @Column(name = "cast_members")
     private String cast;
     private int releaseYear;
 

@@ -2,6 +2,7 @@ package com.netflix.streamingservice.controller;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/v1/stream")
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class StreamingController {
     
     private final StreamingService streamingService;
