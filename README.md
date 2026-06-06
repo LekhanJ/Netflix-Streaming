@@ -25,7 +25,7 @@ No video data passes through any service at stream time — the client streams d
 ---
 
 ## 🏗️ Architecture
-
+![Architecture](netflix_hld.png)
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                         CLIENT / ADMIN API                               │
